@@ -1,0 +1,61 @@
+
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Presentación interactiva - Cristian Cruz</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.deck{max-width:900px;margin:30px auto;background:#fff;border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,.08);padding:28px}
+.slide{display:none;min-height:440px}.slide.active{display:block}
+.progress{height:8px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:14px 0 22px}
+.progress span{display:block;height:100%;background:#0e7490;width:0}
+.controls{display:flex;justify-content:space-between;gap:12px}
+button{border:0;background:#164e63;color:#fff;padding:12px 18px;border-radius:9px;cursor:pointer;font-weight:bold}
+button:disabled{opacity:.45;cursor:not-allowed}.badge{display:inline-block;background:#dbeafe;color:#1e3a8a;padding:6px 10px;border-radius:999px;font-weight:bold}
+.big{font-size:2.2rem}
+</style></head><body>
+<header><span class="tag">Presentación interactiva</span>
+<h1>Herramientas digitales para la gestión comercial y financiera</h1><p>Cristian Cruz</p></header>
+<div class="deck"><div class="progress"><span id="bar"></span></div>
+
+<section class="slide active"><span class="badge">1 / 7</span>
+<h2 class="big">Herramientas digitales para la gestión comercial y financiera</h2>
+<p>Una mirada práctica al uso de tecnología, datos y comunicación digital en los procesos empresariales.</p>
+<p><strong>Objetivo:</strong> reconocer herramientas que ayudan a organizar información, relacionarse con clientes y apoyar decisiones.</p></section>
+
+<section class="slide"><span class="badge">2 / 7</span><h2>¿Por qué son importantes?</h2>
+<ul><li>Facilitan el acceso y organización de información.</li><li>Agilizan la comunicación con clientes y equipos.</li>
+<li>Permiten analizar resultados y hacer seguimiento.</li><li>Apoyan el trabajo colaborativo y remoto.</li></ul></section>
+
+<section class="slide"><span class="badge">3 / 7</span><h2>Herramientas clave</h2><div class="grid">
+<div class="card"><h3>Hojas de cálculo</h3><p>Presupuestos, ventas, costos e indicadores.</p></div>
+<div class="card"><h3>CRM</h3><p>Clientes, oportunidades y seguimiento.</p></div>
+<div class="card"><h3>Nube</h3><p>Documentos y trabajo colaborativo.</p></div>
+<div class="card"><h3>Comunicación</h3><p>Correo, chat y videoconferencias.</p></div>
+</div></section>
+
+<section class="slide"><span class="badge">4 / 7</span><h2>Aplicación comercial</h2>
+<p>En ventas y marketing, las herramientas digitales ayudan a gestionar contactos, publicar contenido, registrar oportunidades y medir resultados.</p>
+<blockquote>La tecnología debe estar al servicio del proceso comercial y de las necesidades del cliente.</blockquote></section>
+
+<section class="slide"><span class="badge">5 / 7</span><h2>Aplicación financiera</h2>
+<p>En el ámbito financiero se pueden organizar ingresos, gastos, costos y presupuestos, además de construir reportes e indicadores.</p>
+<p>Una buena organización de datos facilita comparar resultados y apoyar la planeación.</p></section>
+
+<section class="slide"><span class="badge">6 / 7</span><h2>Buenas prácticas</h2>
+<ul><li>Proteger cuentas y contraseñas.</li><li>Definir permisos de acceso.</li><li>Realizar copias de seguridad.</li>
+<li>Revisar la calidad de los datos.</li><li>Capacitar a quienes usan las herramientas.</li></ul></section>
+
+<section class="slide"><span class="badge">7 / 7</span><h2>Conclusión</h2>
+<p>Las herramientas digitales pueden mejorar la gestión comercial y financiera cuando se seleccionan de acuerdo con las necesidades de la organización y se utilizan con criterios de seguridad, organización y responsabilidad.</p>
+<p><strong>Gracias.</strong></p></section>
+
+<div class="controls"><button id="prev" onclick="move(-1)">Anterior</button><button id="next" onclick="move(1)">Siguiente</button></div>
+</div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+let i=0;
+function render(){slides.forEach((s,n)=>s.classList.toggle('active',n===i));document.getElementById('prev').disabled=i===0;document.getElementById('next').disabled=i===slides.length-1;document.getElementById('bar').style.width=((i+1)/slides.length*100)+'%';}
+function move(step){i=Math.min(Math.max(i+step,0),slides.length-1);render();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')move(1);if(e.key==='ArrowLeft')move(-1);});
+render();
+</script></body></html>
